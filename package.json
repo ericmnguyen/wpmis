@@ -1,0 +1,20 @@
+{
+  "name": "wpmis_server",
+  "version": "1.0.0",
+  "description": "WPMIS API server",
+  "main": "app.js",
+  "scripts": {
+    "dev": "npx nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2",
+    "mysql2": "^3.9.1"
+  }
+}
