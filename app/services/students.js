@@ -15,13 +15,11 @@ const createStudentDb = async (params) => {
   try {
     // execute creating student query
     const { studentId, firstName, lastName, email, contactNo, courseCode, specialisationCode, year, nationality, userId } = params;
-    console.log('params', params);
     const [rows] = await pool.query(`
     INSERT INTO student (StudentId, FirstName, LastName, EmailAddress, ContactNo,
       CourseCode, SpecialisationCode, YearEnrolled, Nationality, UserId)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?,?, ?)`
     , [studentId, firstName, lastName, email, contactNo, courseCode, specialisationCode, year, nationality, userId]);
-    console.log('rows', rows);
     return rows;
   } catch (err) {
     return err;
