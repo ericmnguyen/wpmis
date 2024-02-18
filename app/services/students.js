@@ -26,6 +26,31 @@ const createStudentDb = async (params) => {
   }
 }
 
+const updateStudentDb = async (id, body) => {
+  try {
+    // execute creating student query
+    const { studentId, firstName, lastName, email, contactNo, courseCode, specialisationCode, year, nationality, userId } = body;
+    const [rows] = await pool.query(`
+    UPDATE student
+    SET
+      StudentId=?,
+      FirstName=?,
+      LastName=?,
+      EmailAddress=?,
+      ContactNo=?,
+      CourseCode=?,
+      SpecialisationCode=?,
+      YearEnrolled=?,
+      Nationality=?,
+      UserId=?
+    WHERE StudentId=?`
+    , [studentId, firstName, lastName, email, contactNo, courseCode, specialisationCode, year, nationality, userId, id]);
+    return rows;
+  } catch (err) {
+    return err;
+  }
+}
+
 const deleteStudentDb = async (id) => {
   try {
     // execute creating student query
@@ -38,4 +63,4 @@ const deleteStudentDb = async (id) => {
   }
 }
 
-module.exports = { getStudentsDb, createStudentDb, deleteStudentDb }
+module.exports = { getStudentsDb, createStudentDb, updateStudentDb, deleteStudentDb }
