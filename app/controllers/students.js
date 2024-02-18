@@ -11,7 +11,7 @@ const createStudent = async (req, res) => {
   if (student?.errno) {
     return res.status(500).send(student);
   }
-  return res.status(200).send(student);
+  return res.status(201).send(student);
 }
 
 const updateStudent = async (req, res) => {
