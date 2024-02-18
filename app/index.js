@@ -11,6 +11,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.use('/api/students', require('./routes/students'));
+app.use('/api/student', require('./routes/students'));
 
 module.exports = app;

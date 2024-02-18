@@ -26,4 +26,16 @@ const createStudentDb = async (params) => {
   }
 }
 
-module.exports = { getStudentsDb, createStudentDb }
+const deleteStudentDb = async (id) => {
+  try {
+    // execute creating student query
+    const [rows] = await pool.query(`
+    DELETE FROM student WHERE StudentId= ?`
+    , [id]);
+    return rows;
+  } catch (err) {
+    return err;
+  }
+}
+
+module.exports = { getStudentsDb, createStudentDb, deleteStudentDb }
