@@ -11,6 +11,17 @@ const getStudentsDb = async () => {
   }
 }
 
+// Get student by id
+const getStudentByIdDb = async (id) => {
+  try {
+    // execute will internally call prepare and query
+    const [rows] = await pool.query(`SELECT * FROM student WHERE StudentId=?`, [id]);
+    return rows;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 const createStudentDb = async (params) => {
   try {
     // execute creating student query
@@ -63,4 +74,4 @@ const deleteStudentDb = async (id) => {
   }
 }
 
-module.exports = { getStudentsDb, createStudentDb, updateStudentDb, deleteStudentDb }
+module.exports = { getStudentsDb, getStudentByIdDb, createStudentDb, updateStudentDb, deleteStudentDb }

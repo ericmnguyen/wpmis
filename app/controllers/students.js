@@ -1,8 +1,14 @@
-const { getStudentsDb, createStudentDb, updateStudentDb, deleteStudentDb } = require('../services/students');
+const { getStudentsDb, getStudentByIdDb, createStudentDb, updateStudentDb, deleteStudentDb } = require('../services/students');
 
 const allStudents = async (req, res) => {
   const students = await getStudentsDb();
   return res.status(200).send(students);
+}
+
+const getStudentById = async (req, res) => {
+  const { id } = req.params;
+  const student = await getStudentByIdDb(id);
+  return res.status(200).send(student);
 }
 
 const createStudent = async (req, res) => {
@@ -32,4 +38,4 @@ const deleteStudent = async (req, res) => {
   return res.status(200).send(student);
 }
 
-module.exports = { allStudents, createStudent, updateStudent, deleteStudent };
+module.exports = { allStudents, getStudentById, createStudent, updateStudent, deleteStudent };
